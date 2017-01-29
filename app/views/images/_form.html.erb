@@ -4,34 +4,23 @@
       <h2><%= pluralize(image.errors.count, "error") %> prohibited this image from being saved:</h2>
 
       <ul>
-      <% image.errors.full_messages.each do |message| %>
+        <% image.errors.full_messages.each do |message| %>
         <li><%= message %></li>
-      <% end %>
+        <% end %>
       </ul>
     </div>
   <% end %>
 
-  <div class="field">
+  <p class="control">
     <%= f.label :caption %>
-    <%= f.text_area :caption %>
-  </div>
-
-  <div class="field">
-    <%= f.label :file_type %>
-    <%= f.text_field :file_type %>
-  </div>
-
-  <div class="field">
-    <%= f.label :s3_file_name %>
-    <%= f.text_area :s3_file_name %>
-  </div>
-  <div class="field">
-    <%= f.label :file %>
+    <%= f.text_area :caption, class: "input is-large" %>
+  </p>
+  <p class="control">
+    <%= f.label :file, 'Image' %>
     <%= f.file_field :file %>
-  </div>
-  
+  </p>
 
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+  <p class="control actions">
+    <%= f.submit class: "button is-primary is-large" %>
+  </p>
 <% end %>

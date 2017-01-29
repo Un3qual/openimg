@@ -21,3 +21,20 @@ nav.nav {
 .share.subtitle {
 	margin-bottom: 0.5rem;
 }
+@font-face {
+  font-family: 'SharpSansNoOne-Black';
+  src: url('/assets/SharpSansNoOne-Black.eot');
+  src: url('/assets/SharpSansNoOne-Black.woff2') format('woff2'),
+       url('/assets/SharpSansNoOne-Black.woff') format('woff'),
+       url('/assets/SharpSansNoOne-Black.ttf') format('truetype'),
+       url('/assets/SharpSansNoOne-Black.svg#SharpSansNoOne-Black') format('svg'),
+       url('/assets/SharpSansNoOne-Black.eot?#iefix') format('embedded-opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.logo-nav {
+	font-family: SharpSansNoOne-Black;
+	color: #000 !important;
+	font-size: 20px;
+}

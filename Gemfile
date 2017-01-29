@@ -24,7 +24,7 @@ gem "uglifier"
 gem "bulma-rails"
 gem "carrierwave"
 gem "fog-aws"
-gem "rmagick"
+gem "mini_magick"
 gem "activemodel-serializers-xml", github: "rails/activemodel-serializers-xml"
 gem "draper"
 

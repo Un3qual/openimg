@@ -1,3 +1,5 @@
 Rails.application.routes.draw do
-  resources :images
+  resources :images, :path => 'i'
+
+  root to: 'images#new'
 end
