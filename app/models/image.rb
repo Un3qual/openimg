@@ -1,5 +1,8 @@
 class Image < ApplicationRecord
 
+	validates :file, presence: true
+	validates :caption, length: { maximum: 120 }
+
 	self.primary_key = 'id'
 
 	# Generate random base36 id before creation

@@ -8,6 +8,7 @@ class ImagesController < ApplicationController
 
   # GET /images/1
   def show
+    
   end
 
   # GET /images/new
