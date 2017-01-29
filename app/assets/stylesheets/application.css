@@ -14,3 +14,10 @@
  *= require_self
  */
 @import "bulma";
+nav.nav {
+	margin-bottom: 10px;
+}
+
+.share.subtitle {
+	margin-bottom: 0.5rem;
+}

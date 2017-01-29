@@ -16,15 +16,17 @@ gem "rails", "~> 5.0.0"
 gem "recipient_interceptor"
 gem "sass-rails", "~> 5.0"
 gem "simple_form"
-gem "skylight"
 gem "sprockets", ">= 3.0.0"
 gem "suspenders"
 gem "title"
 gem "uglifier"
 # -- END SUSPENDERS GEMS--
 gem "bulma-rails"
-gem "carrierwave", "~> 1.0"
+gem "carrierwave"
 gem "fog-aws"
+gem "rmagick"
+gem "activemodel-serializers-xml", github: "rails/activemodel-serializers-xml"
+gem "draper"
 
 group :development do
   # -- BEGIN SUSPENDERS GEMS--
@@ -69,6 +71,8 @@ end
 
 group :staging, :production do
   # -- BEGIN SUSPENDERS GEMS--
+  gem "skylight"
+
   gem "rack-timeout"
   # -- END SUSPENDERS GEMS--
 end

@@ -14,3 +14,6 @@
 //= require jquery_ujs
 
 //= require_tree .
+$(".share-url-select").click(function () {
+   $(this).select();
+});

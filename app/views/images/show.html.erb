@@ -1,19 +1,57 @@
-<p id="notice"><%= notice %></p>
+<div class="columns">
+	<div class="column is-two-thirds">
+		<div class="card">
+			<div class="card-image">
+				<figure class="image">
+					<%= image_tag(@image.file) if @image.file? %>
+				</figure>
+			</div>
+			<div class="card-content">
 
-<p>
-  <strong>Caption:</strong>
-  <%= @image.caption %>
-</p>
+				<div class="content">
+					<%= @image.caption %>
+					<br>
+					<small><%= @image.formatted_date %></small>
+				</div>
+			</div>
+			<footer class="card-footer">
+				<a class="card-footer-item">Flag</a>
+				<a class="card-footer-item">Edit</a>
+				<a class="card-footer-item">Delete</a>
+			</footer>
+		</div>
+	</div>
+	<div class="column">
+		<h1 class="title">Share</h1>
+		<h2 class="subtitle">Social</h2>
+		<div class="box">
+			<div class="columns">
+				<div class="column">
+					<%= link_to(image_tag("voat_logo.svg", class:"image is-64x64"), "https://voat.co/submit?linkpost=true&url=#{image_url(@image)}&title=#{@image.caption}", target: "_blank") %>
+				</div>
+				<div class="column">
+					<%= link_to(image_tag("reddit_logo.svg", class:"image is-64x64"), "https://www.reddit.com/submit?url=#{image_url(@image)}&title=#{@image.caption}", target: "_blank") %>
+				</div>
+				<div class="column">
+					<%= link_to(image_tag("fb_logo.svg", class:"image is-64x64"), "https://www.facebook.com/sharer/sharer.php?u=#{URI.encode(image_url(@image))}&t=#{@image.caption}", target: "_blank") %>
+				</div>
+				<div class="column">
+					<%= link_to(image_tag("twitter_logo.svg", class:"image is-64x64"), "https://twitter.com/share?url=#{image_url(@image)}&via=openimg&text=#{@image.caption}", target: "_blank") %>
+				</div>
+			</div>
+		</div>
+		<h2 class="subtitle">URLs</h2>
+		<div class="box">
+			<h2 class="share subtitle">URL</h2>
+			<%= text_field_tag 'urlShare', image_url(@image), readonly: true, class: "share-url-select input" %>
+			<br><br>
+			<h2 class="share subtitle">Markdown</h2>
+			<%= text_field_tag 'mdShare', "![#{@image.caption}](#{image_url(@image)})", readonly: true, class: "share-url-select input" %>
+			
+		</div>
+	</div>
+</div>
 
-<p>
-  <strong>File type:</strong>
-  <%= @image.file_type %>
-</p>
 
-<p>
-  <strong>S3 file name:</strong>
-  <%= @image.s3_file_name %>
-</p>
 
-<%= link_to 'Edit', edit_image_path(@image) %> |
-<%= link_to 'Back', images_path %>
+</div>

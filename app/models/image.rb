@@ -8,11 +8,12 @@ class Image < ApplicationRecord
 	def generate_id
 		self.id = SecureRandom.hex(10).to_i(16).to_s(36)
 		#retry if not unique
-		generate_id unless Post.where(id: self.id).blank?
+		generate_id unless Image.where(id: self.id).blank?
 	end
 
 	def id_blank?
 		id.blank?
 	end
+	mount_uploader :file, FileUploader
 
 end
