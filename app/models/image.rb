@@ -2,6 +2,7 @@ class Image < ApplicationRecord
 
 	validates :file, presence: true
 	validates :caption, length: { maximum: 120 }
+	belongs_to :user
 
 	self.primary_key = 'id'
 

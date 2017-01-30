@@ -24,6 +24,12 @@ class ImagesController < ApplicationController
   def create
     @image = Image.new(image_params)
 
+    if user_signed_in?
+      @image.user_id = current_user.id
+    else
+      @image.user_id = User.where(username: 'Guest').limit(1).pluck(:id)[0]
+    end
+
     if @image.save
       redirect_to @image, notice: 'Image was successfully created.'
     else
@@ -54,6 +60,6 @@ class ImagesController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def image_params
-      params.require(:image).permit(:caption, :file, :is_public)
+      params.require(:image).permit(:caption, :file, :is_public, :user_id)
     end
 end

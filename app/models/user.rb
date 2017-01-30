@@ -5,7 +5,9 @@ class User < ApplicationRecord
   :rememberable, :trackable, :validatable
 
   validates :username, presence: true, uniqueness: { case_sensitive: false }, 
-    :format => { with: /\A[a-zA-Z0-9\_]+\Z/, :message => 'Usernames can only have letters, numbers, and underscores.' }
+  :format => { with: /\A[a-zA-Z0-9\_]+\Z/, :message => 'Usernames can only have letters, numbers, and underscores.' }
+
+  has_many :images
 
   self.primary_key = 'id'
 
