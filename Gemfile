@@ -17,6 +17,7 @@ gem "sprockets", ">= 3.0.0"
 gem "suspenders"
 gem "title"
 gem "uglifier"
+gem 'delayed_job_active_record'
 # -- END SUSPENDERS GEMS--
 #gem "bulma-rails"
 gem "carrierwave"
