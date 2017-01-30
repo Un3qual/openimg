@@ -9,7 +9,6 @@ gem "honeybadger"
 gem "jquery-rails"
 gem "normalize-rails", "~> 3.0.0"
 gem "pg"
-gem "puma"
 gem "rack-canonical-host"
 gem "rails", "~> 5.0.0"
 gem "recipient_interceptor"
@@ -48,6 +47,7 @@ group :development, :test do
   gem "pry-byebug"
   gem "pry-rails"
   gem "rspec-rails", "~> 3.5"
+  gem "puma"
   # -- END SUSPENDERS GEMS--
 end
 
@@ -73,7 +73,7 @@ end
 group :staging, :production do
   # -- BEGIN SUSPENDERS GEMS--
   gem "skylight"
-
+  gem "unicorn"
   gem "rack-timeout"
   # -- END SUSPENDERS GEMS--
 end
