@@ -3,7 +3,7 @@ class ImagesController < ApplicationController
 
   # GET /images
   def index
-    @images = Image.all
+    @images = Image.all.decorate
   end
 
   # GET /images/1
@@ -54,6 +54,6 @@ class ImagesController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def image_params
-      params.require(:image).permit(:caption, :file_type, :s3_file_name, :file)
+      params.require(:image).permit(:caption, :file, :is_public)
     end
 end

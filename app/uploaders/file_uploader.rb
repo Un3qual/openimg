@@ -9,11 +9,20 @@ class FileUploader < CarrierWave::Uploader::Base
   # storage :fog
   process :strip
   process :convert => 'jpg'
+  process :set_content_type_to_jpg
   process :quality => 75
   # Override the directory where uploaded files will be stored.
   # This is a sensible default for uploaders that are meant to be mounted:
   def store_dir
     "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
+  end
+
+  def set_content_type_to_jpg
+    self.file.instance_variable_set(:@content_type, "image/jpg")
+  end
+
+  def filename
+    super.chomp(File.extname(super)) + ".jpg" if original_filename.present?
   end
 
   # Provide a default URL as a default if there hasn't been a file uploaded:
@@ -33,8 +42,9 @@ class FileUploader < CarrierWave::Uploader::Base
 
   # Create different versions of your uploaded files:
   version :thumb do
-    process resize_to_fit: [100, 100]
+    process resize_to_fill: [256, 256]
     process :strip
+    process :set_content_type_to_jpg
     process :convert => 'jpg'
     process :quality => 75
   end

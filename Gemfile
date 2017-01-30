@@ -15,7 +15,6 @@ gem "rack-canonical-host"
 gem "rails", "~> 5.0.0"
 gem "recipient_interceptor"
 gem "sass-rails", "~> 5.0"
-gem "simple_form"
 gem "sprockets", ">= 3.0.0"
 gem "suspenders"
 gem "title"
@@ -25,8 +24,9 @@ gem "bulma-rails"
 gem "carrierwave"
 gem "fog-aws"
 gem "mini_magick"
-gem "activemodel-serializers-xml", github: "rails/activemodel-serializers-xml"
-gem "draper"
+#gem "activemodel-serializers-xml", github: "rails/activemodel-serializers-xml"
+gem 'draper', github: 'drapergem/draper'
+gem 'devise'
 
 group :development do
   # -- BEGIN SUSPENDERS GEMS--

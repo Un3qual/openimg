@@ -9,6 +9,7 @@ module CarrierWave
         img
       end
     end
+    
 
     # Reduces the quality of the image to the percentage given
     def quality(percentage)
