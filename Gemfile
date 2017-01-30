@@ -5,7 +5,7 @@ ruby "2.4.0"
 # -- BEGIN SUSPENDERS GEMS--
 gem "autoprefixer-rails"
 gem "flutie"
-#gem "honeybadger"
+gem "honeybadger"
 gem "jquery-rails"
 gem "normalize-rails", "~> 3.0.0"
 gem "pg"
