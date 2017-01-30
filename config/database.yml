@@ -1,21 +1,27 @@
-development: &default
-  adapter: postgresql
-  database: openimg_development
-  encoding: utf8
-  min_messages: warning
-  pool: <%= Integer(ENV.fetch("DB_POOL", 5)) %>
-  reaping_frequency: <%= Integer(ENV.fetch("DB_REAPING_FREQUENCY", 10)) %>
-  timeout: 5000
 
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  # For details on connection pooling, see rails configuration guide
+  # http://guides.rubyonrails.org/configuring.html#database-pooling
+  pool: 5
+  host: localhost
+  username: rails
+  password: <%= ENV['APP_DATABASE_PASSWORD'] %>
+
+development:
+  <<: *default
+  database: openimg_development
+
+# Warning: The database defined as "test" will be erased and
+# re-generated from your development database when you run "rake".
+# Do not set this db to the same as development or production.
 test:
   <<: *default
   database: openimg_test
 
-production: &deploy
-  encoding: utf8
-  min_messages: warning
-  pool: <%= [Integer(ENV.fetch("MAX_THREADS", 5)), Integer(ENV.fetch("DB_POOL", 5))].max %>
-  timeout: 5000
-  url:  <%= ENV.fetch("DATABASE_URL", "") %>
-
-staging: *deploy
+production:
+  <<: *default
+  database: openimg_production
+  username: rails
+  password: <%= ENV['APP_DATABASE_PASSWORD'] %>
