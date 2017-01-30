@@ -77,3 +77,5 @@ group :staging, :production do
   gem "rack-timeout"
   # -- END SUSPENDERS GEMS--
 end
+
+gem 'rails_12factor', group: :production
