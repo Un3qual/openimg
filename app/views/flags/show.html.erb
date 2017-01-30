@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @flag.user %>
+</p>
+
+<p>
+  <strong>Comment:</strong>
+  <%= @flag.comment %>
+</p>
+
+<p>
+  <strong>Reason:</strong>
+  <%= @flag.reason %>
+</p>
+
+<p>
+  <strong>Image:</strong>
+  <%= @flag.image %>
+</p>
+
+<p>
+  <strong>Action taken:</strong>
+  <%= @flag.action_taken %>
+</p>
+
+<p>
+  <strong>Action:</strong>
+  <%= @flag.action %>
+</p>
+
+<p>
+  <strong>Action taken by:</strong>
+  <%= @flag.action_taken_by %>
+</p>
+
+<p>
+  <strong>Action comment:</strong>
+  <%= @flag.action_comment %>
+</p>
+
+<%= link_to 'Edit', edit_flag_path(@flag) %> |
+<%= link_to 'Back', flags_path %>

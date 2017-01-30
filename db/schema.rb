@@ -10,38 +10,65 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170130033229) do
+ActiveRecord::Schema.define(version: 20170130050340) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "images", id: false, force: :cascade do |t|
-    t.string   "id",                        null: false
-    t.text     "caption"
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
-    t.string   "file"
-    t.boolean  "is_public",  default: true
+  create_table "flags", id: false, force: :cascade do |t|
+    t.string   "id",              null: false
     t.string   "user_id"
+    t.text     "comment",         null: false
+    t.integer  "reason",          null: false
+    t.string   "image_id"
+    t.boolean  "action_taken"
+    t.integer  "action"
+    t.string   "action_taken_by"
+    t.text     "action_comment"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.index ["id"], name: "index_flags_on_id", unique: true, using: :btree
+    t.index ["image_id"], name: "index_flags_on_image_id", using: :btree
+    t.index ["user_id"], name: "index_flags_on_user_id", using: :btree
+  end
+
+  create_table "images", id: false, force: :cascade do |t|
+    t.string   "id",                               null: false
+    t.text     "caption"
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
+    t.string   "file"
+    t.boolean  "is_public",        default: true
+    t.string   "user_id"
+    t.boolean  "deleted",          default: false
+    t.string   "deleted_by"
+    t.datetime "deletion_date"
+    t.integer  "deletion_reason"
+    t.text     "deletion_comment"
+    t.boolean  "user_was_banned"
     t.index ["id"], name: "index_images_on_id", unique: true, using: :btree
     t.index ["user_id"], name: "index_images_on_user_id", using: :btree
   end
 
   create_table "users", id: false, force: :cascade do |t|
-    t.string   "id",                               null: false
-    t.string   "encrypted_password",  default: "", null: false
+    t.string   "id",                                  null: false
+    t.string   "encrypted_password",  default: "",    null: false
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",       default: 0,  null: false
+    t.integer  "sign_in_count",       default: 0,     null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.inet     "current_sign_in_ip"
     t.inet     "last_sign_in_ip"
-    t.datetime "created_at",                       null: false
-    t.datetime "updated_at",                       null: false
-    t.string   "username",                         null: false
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
+    t.string   "username",                            null: false
+    t.boolean  "is_admin",            default: false, null: false
+    t.boolean  "is_moderator",        default: false, null: false
     t.index ["id"], name: "index_users_on_id", unique: true, using: :btree
     t.index ["username"], name: "index_users_on_username", unique: true, using: :btree
   end
 
+  add_foreign_key "flags", "images"
+  add_foreign_key "flags", "users"
   add_foreign_key "images", "users"
 end

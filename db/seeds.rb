@@ -7,4 +7,5 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 User.create(username: 'Guest', password: 'opensesame')
-User.create(username: 'System', password: 'opensesame')
+User.create(username: 'System', password: 'opensesame', is_admin: true, is_moderator: true)
+User.create(username: 'dude', password: 'opensesame')

@@ -1,0 +1,17 @@
+<%= form_for(@image, url: admin_delete_image_path(@image), method: :post) do |f| %>
+<p class="control">
+	<%= f.label :deletion_reason %>
+	<span class="select">
+		<%= select_tag(:deletion_reason, options_for_select(options_for_select([['Other', 0], ['Spam', 1], ['Illegal Content', 2], ['Abusive Content', 3]])), class: 'select') %>
+	</span>
+
+</p>
+<p class="control">
+	<%= f.label :deletion_comment %>
+	<%= f.text_area :deletion_comment, class: "input is-large" %>
+</p>
+
+<p class="control actions">
+	<%= f.submit class: "button is-primary is-large" %>
+</p>
+<% end %>

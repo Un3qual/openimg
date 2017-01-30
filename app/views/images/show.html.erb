@@ -19,11 +19,19 @@
 					<small><%= @image.formatted_date %></small>
 				</div>
 			</div>
+			<% if current_user.is_admin %>
+			<footer class="card-footer">
+			<%= link_to('Delete', admin_actions_image_path(@image), class: 'card-footer-item') %>
+				<a class="card-footer-item">Edit</a>
+				<a class="card-footer-item">Flag</a>
+				<a class="card-footer-item">Stats</a>
+			</footer>
+			<% else %>
 			<footer class="card-footer">
 				<a class="card-footer-item">Flag</a>
-				<a class="card-footer-item">Edit</a>
-				<a class="card-footer-item">Delete</a>
+				<a class="card-footer-item">Stats</a>
 			</footer>
+			<% end %>
 		</div>
 	</div>
 	<div class="column">
@@ -59,4 +67,20 @@
 
 
 
+</div>
+<div class="modal">
+  <div class="modal-background"></div>
+  <div class="modal-card">
+    <header class="modal-card-head">
+      <p class="modal-card-title">Modal title</p>
+      <button class="delete"></button>
+    </header>
+    <section class="modal-card-body">
+      ayy lmao
+    </section>
+    <footer class="modal-card-foot">
+      <a class="button is-primary">Save changes</a>
+      <a class="button">Cancel</a>
+    </footer>
+  </div>
 </div>
