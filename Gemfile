@@ -72,7 +72,7 @@ end
 
 group :staging, :production do
   # -- BEGIN SUSPENDERS GEMS--
-  gem "skylight"
+  #gem "skylight"
   gem "unicorn"
   gem "rack-timeout"
   # -- END SUSPENDERS GEMS--
