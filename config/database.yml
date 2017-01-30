@@ -9,7 +9,7 @@ development: &default
 
 test:
   <<: *default
-  database: <%= app_name %>_test
+  database: openimg_test
 
 production: &deploy
   encoding: utf8
