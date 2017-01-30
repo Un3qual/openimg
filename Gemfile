@@ -4,7 +4,6 @@ ruby "2.4.0"
 
 # -- BEGIN SUSPENDERS GEMS--
 gem "autoprefixer-rails"
-gem "delayed_job_active_record"
 gem "flutie"
 gem "honeybadger"
 gem "jquery-rails"
@@ -27,6 +26,7 @@ gem "mini_magick"
 #gem "activemodel-serializers-xml", github: "rails/activemodel-serializers-xml"
 gem 'draper', github: 'drapergem/draper'
 gem 'devise'
+gem 'fog'
 
 group :development do
   # -- BEGIN SUSPENDERS GEMS--
@@ -35,6 +35,7 @@ group :development do
   gem "spring-commands-rspec"
   gem "web-console"
   # -- END SUSPENDERS GEMS--
+  gem "brakeman"
 end
 
 group :development, :test do

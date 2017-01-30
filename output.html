@@ -1,0 +1,563 @@
+<!DOCTYPE HTML SYSTEM>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Brakeman Report</title>
+  <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+  <script type="text/javascript" src="https://cdn.datatables.net/1.10.9/js/jquery.dataTables.min.js"></script>
+  <script type="text/javascript">
+    function toggle(context) {
+      var elem = document.getElementById(context);
+
+      if (elem.style.display != "block")
+        elem.style.display = "block";
+      else
+        elem.style.display = "none";
+
+      elem.parentNode.scrollIntoView();
+    }
+
+    $(document).ready(function() {
+      $('table').DataTable({
+        searching: false,
+        paging:    false,
+        info:      false
+      });
+    });
+  </script>
+  <style>
+    /* CSS style used for HTML reports */
+
+body {
+  font-family: sans-serif;
+  color: #161616;
+}
+
+a {
+  color: #161616;
+}
+
+p {
+  font-weight: bold;
+  font-size: 11pt;
+  color: #2D0200;
+ }
+
+ th {
+   background-color: #980905;
+   border-bottom: 5px solid #530200;
+   color: white;
+   font-size: 11pt;
+   padding: 1px 8px 1px 8px;
+ }
+
+ td {
+   border-bottom: 2px solid white;
+   font-family: monospace;
+   padding: 5px 8px 1px 8px;
+ }
+
+ table {
+   background-color: #FCF4D4;
+   border-collapse: collapse;
+ }
+
+ h1 {
+   color: #2D0200;
+   font-size: 14pt;
+ }
+
+ h2 {
+   color: #2D0200;
+   font-size: 12pt;
+ }
+
+ span.high-confidence {
+   font-weight:bold;
+   color: red;
+ }
+
+ span.med-confidence {
+ }
+
+ span.weak-confidence {
+   color:gray;
+ }
+
+ div.warning_message {
+   cursor: pointer;
+ }
+
+ div.warning_message:hover {
+   background-color: white;
+ }
+
+ table caption {
+   background-color: #FFE;
+   padding: 2px;
+ }
+
+ table.context {
+   margin-top: 5px;
+   margin-bottom: 5px;
+   border-left: 1px solid #90e960;
+   color: #212121;
+ }
+
+ tr.context {
+   background-color: white;
+ }
+
+ tr.first {
+   border-top: 1px solid #7ecc54;
+   padding-top: 2px;
+ }
+
+ tr.error {
+  background-color: #f4c1c1 !important
+ }
+
+ tr.near_error {
+  background-color: #f4d4d4 !important
+ }
+
+ tr.alt {
+   background-color: #e8f4d4;
+ }
+
+ td.context {
+   padding: 2px 10px 0px 6px;
+   border-bottom: none;
+ }
+
+ td.context_line {
+   padding: 2px 8px 0px 7px;
+   border-right: 1px solid #b3bda4;
+   border-bottom: none;
+   color: #6e7465;
+ }
+
+ pre.context {
+   margin-bottom: 1px;
+ }
+
+ .user_input {
+   background-color: #fcecab;
+ }
+
+ div.render_path {
+   display: none;
+   background-color: #ffe;
+   padding: 5px;
+   margin: 2px 0px 2px 0px;
+ }
+
+ div.template_name {
+   cursor: pointer;
+ }
+
+ div.template_name:hover {
+   background-color: white;
+ }
+
+  </style>
+</head>
+<body>
+
+<h1>Brakeman Report</h1>
+<table>
+  <thead>
+    <tr>
+      <th>Application Path</th>
+      <th>Rails Version</th>
+      <th>Brakeman Version</th>
+      <th>Report Time</th>
+      <th>Checks Performed</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>/Users/admin/Desktop/Programming/Learning/Rails/openimg</td>
+      <td>5.0.1</td>
+      <td>3.4.1
+      <td>
+        2017-01-29 23:27:06 -0800<br><br>
+        0.345051 seconds
+      </td>
+      <td>BasicAuth, BasicAuthTimingAttack, ContentTag, CreateWith, CrossSiteScripting, DefaultRoutes, Deserialize, DetailedExceptions, DigestDoS, DynamicFinders, EscapeFunction, Evaluation, Execute, FileAccess, FileDisclosure, FilterSkipping, ForgerySetting, HeaderDoS, I18nXSS, JRubyXML, JSONEncoding, JSONParsing, LinkTo, LinkToHref, MailTo, MassAssignment, MimeTypeDoS, ModelAttrAccessible, ModelAttributes, ModelSerialize, NestedAttributes, NestedAttributesBypass, NumberToCurrency, QuoteTableName, Redirect, RegexDoS, Render, RenderDoS, RenderInline, ResponseSplitting, RouteDoS, SQL, SQLCVEs, SSLVerify, SafeBufferManipulation, SanitizeMethods, SelectTag, SelectVulnerability, Send, SendFile, SessionManipulation, SessionSettings, SimpleFormat, SingleQuotes, SkipBeforeFilter, StripTags, SymbolDoSCVE, TranslateBug, UnsafeReflection, ValidationRegex, WithoutProtection, XMLDoS, YAMLParsing</td>
+    </tr>
+  </tbody>
+</table>
+<br>
+<h2 id='summary'>Summary</h2>
+<table>
+  <thead>
+    <tr>
+      <th>Scanned/Reported</th>
+      <th>Total</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Controllers</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <td>Models</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <td>Templates</td>
+      <td>30</td>
+    </tr>
+    <tr>
+      <td>Errors</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>Security Warnings</td>
+      <td>3 <span class='high-confidence'>(3)</span></td>
+    </tr>
+  
+    <tr>
+      <td>Ignored Warnings</td>
+      <td>0</td>
+    </tr>
+  
+  </tbody>
+</table>
+<br>
+<table>
+  <thead>
+    <tr>
+      <th>Warning Type</th>
+      <th>Total</th>
+    </tr>
+  </thead>
+  <tbody>
+  
+    <tr>
+      <td>Redirect</td>
+      <td>3</td>
+    </tr>
+  
+  </tbody>
+</table>
+<br>
+<h2>Security Warnings</h2>  
+<table>
+  <thead>
+    <tr>
+      <th>Confidence</th>
+      <th>Class</th>
+      <th>Method</th>
+      <th>Warning Type</th>
+      <th>Message</th>
+    </tr>
+  </thead>
+  <tbody>
+  
+    <tr>
+      <td><span class='high-confidence'>High</span></td>
+      <td>ImagesController</td>
+      <td>admin_delete</td>
+      <td><a rel="no-referrer" href="http://brakemanscanner.org/docs/warning_types/redirect/">Redirect</a></td>
+      <td><div class='warning_message' onClick="toggle('context1');toggle('message1');toggle('full_message1')" ><span id='message1' style='display:block' >Possible unprotected redirect near line 88: redirect_to(<span class="user_input">Image.find(params[:id]).decorate</span>, :notice =&gt; ...</span><span id='full_message1' style='display:none'>Possible unprotected redirect near line 88: redirect_to(<span class="user_input">Image.find(params[:id]).decorate</span>, :notice =&gt; &quot;Image successfully deleted&quot;)</span><table id='context1' class='context' style='display:none'><caption>app/controllers/images_controller.rb</caption>      <thead style='display:none'>
+        <tr>
+          <th>line number</th>
+          <th>line content</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class='context first'>
+          <td class='context_line'>
+            <pre class='context'>83</pre>
+          </td>
+          <td class='context'>
+            <pre class='context'>        @image.deletion_comment = params[:image][:deletion_comment]</pre>
+          </td>
+        </tr>
+          <tr class='context alt'>
+            <td class='context_line'>
+              <pre class='context'>84</pre>
+            </td>
+            <td class='context'>
+              <pre class='context'>      else</pre>
+            </td>
+          </tr>
+          <tr class='context'>
+            <td class='context_line'>
+              <pre class='context'>85</pre>
+            </td>
+            <td class='context'>
+              <pre class='context'>        @image.deletion_comment = nil</pre>
+            </td>
+          </tr>
+          <tr class='context alt'>
+            <td class='context_line'>
+              <pre class='context'>86</pre>
+            </td>
+            <td class='context'>
+              <pre class='context'>      end</pre>
+            </td>
+          </tr>
+          <tr class='context near_error'>
+            <td class='context_line'>
+              <pre class='context'>87</pre>
+            </td>
+            <td class='context'>
+              <pre class='context'>      if @image.save</pre>
+            </td>
+          </tr>
+          <tr class='context alt error'>
+            <td class='context_line'>
+              <pre class='context'>88</pre>
+            </td>
+            <td class='context'>
+              <pre class='context'>        redirect_to @image, notice: &#39;Image successfully deleted&#39;</pre>
+            </td>
+          </tr>
+          <tr class='context near_error'>
+            <td class='context_line'>
+              <pre class='context'>89</pre>
+            </td>
+            <td class='context'>
+              <pre class='context'>      else</pre>
+            </td>
+          </tr>
+          <tr class='context alt'>
+            <td class='context_line'>
+              <pre class='context'>90</pre>
+            </td>
+            <td class='context'>
+              <pre class='context'>        redirect_to @image, notice: &#39;There was an error&#39;</pre>
+            </td>
+          </tr>
+          <tr class='context'>
+            <td class='context_line'>
+              <pre class='context'>91</pre>
+            </td>
+            <td class='context'>
+              <pre class='context'>      end</pre>
+            </td>
+          </tr>
+          <tr class='context alt'>
+            <td class='context_line'>
+              <pre class='context'>92</pre>
+            </td>
+            <td class='context'>
+              <pre class='context'>    else</pre>
+            </td>
+          </tr>
+          <tr class='context'>
+            <td class='context_line'>
+              <pre class='context'>93</pre>
+            </td>
+            <td class='context'>
+              <pre class='context'>      redirect_to @image, notice: &#39;Only admins can delete images&#39;</pre>
+            </td>
+          </tr>
+</tbody></table></div></td>
+    </tr>
+  
+    <tr>
+      <td><span class='high-confidence'>High</span></td>
+      <td>ImagesController</td>
+      <td>admin_delete</td>
+      <td><a rel="no-referrer" href="http://brakemanscanner.org/docs/warning_types/redirect/">Redirect</a></td>
+      <td><div class='warning_message' onClick="toggle('context2');toggle('message2');toggle('full_message2')" ><span id='message2' style='display:block' >Possible unprotected redirect near line 90: redirect_to(<span class="user_input">Image.find(params[:id]).decorate</span>, :notice =&gt; ...</span><span id='full_message2' style='display:none'>Possible unprotected redirect near line 90: redirect_to(<span class="user_input">Image.find(params[:id]).decorate</span>, :notice =&gt; &quot;There was an error&quot;)</span><table id='context2' class='context' style='display:none'><caption>app/controllers/images_controller.rb</caption>      <thead style='display:none'>
+        <tr>
+          <th>line number</th>
+          <th>line content</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class='context first'>
+          <td class='context_line'>
+            <pre class='context'>85</pre>
+          </td>
+          <td class='context'>
+            <pre class='context'>        @image.deletion_comment = nil</pre>
+          </td>
+        </tr>
+          <tr class='context alt'>
+            <td class='context_line'>
+              <pre class='context'>86</pre>
+            </td>
+            <td class='context'>
+              <pre class='context'>      end</pre>
+            </td>
+          </tr>
+          <tr class='context'>
+            <td class='context_line'>
+              <pre class='context'>87</pre>
+            </td>
+            <td class='context'>
+              <pre class='context'>      if @image.save</pre>
+            </td>
+          </tr>
+          <tr class='context alt'>
+            <td class='context_line'>
+              <pre class='context'>88</pre>
+            </td>
+            <td class='context'>
+              <pre class='context'>        redirect_to @image, notice: &#39;Image successfully deleted&#39;</pre>
+            </td>
+          </tr>
+          <tr class='context near_error'>
+            <td class='context_line'>
+              <pre class='context'>89</pre>
+            </td>
+            <td class='context'>
+              <pre class='context'>      else</pre>
+            </td>
+          </tr>
+          <tr class='context alt error'>
+            <td class='context_line'>
+              <pre class='context'>90</pre>
+            </td>
+            <td class='context'>
+              <pre class='context'>        redirect_to @image, notice: &#39;There was an error&#39;</pre>
+            </td>
+          </tr>
+          <tr class='context near_error'>
+            <td class='context_line'>
+              <pre class='context'>91</pre>
+            </td>
+            <td class='context'>
+              <pre class='context'>      end</pre>
+            </td>
+          </tr>
+          <tr class='context alt'>
+            <td class='context_line'>
+              <pre class='context'>92</pre>
+            </td>
+            <td class='context'>
+              <pre class='context'>    else</pre>
+            </td>
+          </tr>
+          <tr class='context'>
+            <td class='context_line'>
+              <pre class='context'>93</pre>
+            </td>
+            <td class='context'>
+              <pre class='context'>      redirect_to @image, notice: &#39;Only admins can delete images&#39;</pre>
+            </td>
+          </tr>
+          <tr class='context alt'>
+            <td class='context_line'>
+              <pre class='context'>94</pre>
+            </td>
+            <td class='context'>
+              <pre class='context'>    end</pre>
+            </td>
+          </tr>
+          <tr class='context'>
+            <td class='context_line'>
+              <pre class='context'>95</pre>
+            </td>
+            <td class='context'>
+              <pre class='context'>  end</pre>
+            </td>
+          </tr>
+</tbody></table></div></td>
+    </tr>
+  
+    <tr>
+      <td><span class='high-confidence'>High</span></td>
+      <td>ImagesController</td>
+      <td>admin_delete</td>
+      <td><a rel="no-referrer" href="http://brakemanscanner.org/docs/warning_types/redirect/">Redirect</a></td>
+      <td><div class='warning_message' onClick="toggle('context3');toggle('message3');toggle('full_message3')" ><span id='message3' style='display:block' >Possible unprotected redirect near line 93: redirect_to(<span class="user_input">Image.find(params[:id]).decorate</span>, :notice =&gt; ...</span><span id='full_message3' style='display:none'>Possible unprotected redirect near line 93: redirect_to(<span class="user_input">Image.find(params[:id]).decorate</span>, :notice =&gt; &quot;Only admins can delete images&quot;)</span><table id='context3' class='context' style='display:none'><caption>app/controllers/images_controller.rb</caption>      <thead style='display:none'>
+        <tr>
+          <th>line number</th>
+          <th>line content</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class='context first'>
+          <td class='context_line'>
+            <pre class='context'>88</pre>
+          </td>
+          <td class='context'>
+            <pre class='context'>        redirect_to @image, notice: &#39;Image successfully deleted&#39;</pre>
+          </td>
+        </tr>
+          <tr class='context alt'>
+            <td class='context_line'>
+              <pre class='context'>89</pre>
+            </td>
+            <td class='context'>
+              <pre class='context'>      else</pre>
+            </td>
+          </tr>
+          <tr class='context'>
+            <td class='context_line'>
+              <pre class='context'>90</pre>
+            </td>
+            <td class='context'>
+              <pre class='context'>        redirect_to @image, notice: &#39;There was an error&#39;</pre>
+            </td>
+          </tr>
+          <tr class='context alt'>
+            <td class='context_line'>
+              <pre class='context'>91</pre>
+            </td>
+            <td class='context'>
+              <pre class='context'>      end</pre>
+            </td>
+          </tr>
+          <tr class='context near_error'>
+            <td class='context_line'>
+              <pre class='context'>92</pre>
+            </td>
+            <td class='context'>
+              <pre class='context'>    else</pre>
+            </td>
+          </tr>
+          <tr class='context alt error'>
+            <td class='context_line'>
+              <pre class='context'>93</pre>
+            </td>
+            <td class='context'>
+              <pre class='context'>      redirect_to @image, notice: &#39;Only admins can delete images&#39;</pre>
+            </td>
+          </tr>
+          <tr class='context near_error'>
+            <td class='context_line'>
+              <pre class='context'>94</pre>
+            </td>
+            <td class='context'>
+              <pre class='context'>    end</pre>
+            </td>
+          </tr>
+          <tr class='context alt'>
+            <td class='context_line'>
+              <pre class='context'>95</pre>
+            </td>
+            <td class='context'>
+              <pre class='context'>  end</pre>
+            </td>
+          </tr>
+          <tr class='context'>
+            <td class='context_line'>
+              <pre class='context'>97</pre>
+            </td>
+            <td class='context'>
+              <pre class='context'>  private</pre>
+            </td>
+          </tr>
+          <tr class='context alt'>
+            <td class='context_line'>
+              <pre class='context'>98</pre>
+            </td>
+            <td class='context'>
+              <pre class='context'>    # Use callbacks to share common setup or constraints between actions.</pre>
+            </td>
+          </tr>
+</tbody></table></div></td>
+    </tr>
+  
+  </tbody>
+</table>
+</body></html>
