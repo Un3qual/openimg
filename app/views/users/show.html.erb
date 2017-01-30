@@ -1,0 +1,29 @@
+<br>
+<div class="columns">
+	<nav class="level has-text-centered" style="width: 100%">
+		<div class="level-item">
+			<div>
+				<p class="heading">Posts</p>
+				<p class="title"><%= @user.images.count %></p>
+			</div>
+		</div>
+		<div class="level-item has-text-centered">
+			<div>
+				<p class="heading">Created</p>
+				<p class="title"><%= @user.created_at.strftime('%F') %></p>
+			</div>
+		</div>
+		<div class="level-item has-text-centered">
+			<div>
+				<p class="heading">Roles</p>
+				<p class="title">none</p>
+			</div>
+		</div>
+		<div class="level-item has-text-centered">
+			<div>
+				<p class="heading">Comments</p>
+				<p class="title">0</p>
+			</div>
+		</div>
+	</nav>
+</div>

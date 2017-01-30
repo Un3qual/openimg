@@ -31,4 +31,9 @@ class User < ApplicationRecord
   def email_changed?
     false
   end
+
+  def count_images
+    3
+    #Image.where(:user_id => self.id).count
+  end
 end

@@ -6,6 +6,8 @@ Rails.application.routes.draw do
 		delete 'logout', to: 'devise/sessions#destroy'
 	end
 
+	match '@:username' => 'users#show', as: :user, via: :get
+
 	resources :images, :path => 'i'
 
 	get '/new' => 'images#index'
