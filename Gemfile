@@ -18,7 +18,7 @@ gem "suspenders"
 gem "title"
 gem "uglifier"
 # -- END SUSPENDERS GEMS--
-gem "bulma-rails"
+#gem "bulma-rails"
 gem "carrierwave"
 gem "fog-aws"
 gem "mini_magick"
