@@ -1,24 +1,29 @@
 <h1 class="title">Latest Public Images</h1>
 <div id="wrapper" style="text-align: center"> 
-<div class="public-list">
-  <% @images.each do |image| %>
-  <div class="public-list-card card">
-    <div class="card-image">
-      <figure class="image is-256x256">
-        <%= link_to image_tag(image.file.thumb), image_path(image) %>
-        <%=  %>
-      </figure>
-    </div>
-    <div class="card-content">
-      <div class="content">
-        <%= image.caption %>
-        <br>
-        <small><%= image.formatted_date %></small>
+  <div class="public-list">
+    <% @images.each do |image| %>
+    <div class="public-list-card card">
+      <div class="card-image">
+        <figure class="image is-256x256">
+          <%= link_to image_tag(image.file.thumb), image_path(image) %>
+          <%=  %>
+        </figure>
+      </div>
+      <div class="card-content">
+        <div class="media">
+          <div class="media-content">
+          <p class="subtitle is-6">@<%= image.user.username %></p>
+          </div>
+        </div>
+        <div class="content">
+          <%= image.caption %>
+          <br>
+          <small><%= image.formatted_date %></small>
+        </div>
       </div>
     </div>
+    <% end %>
   </div>
-<% end %>
-</div>
 </div>
 
 <br>
