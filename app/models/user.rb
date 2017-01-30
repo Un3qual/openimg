@@ -4,7 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable, 
   :rememberable, :trackable, :validatable
 
-  validates :username, presence: true
+  validates :username, presence: true, uniqueness: { case_sensitive: false }, 
+    :format => { with: /\A[a-zA-Z0-9\_]+\Z/, :message => 'Usernames can only have letters, numbers, and underscores.' }
 
   self.primary_key = 'id'
 
